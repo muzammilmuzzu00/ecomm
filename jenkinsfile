@@ -5,7 +5,7 @@ pipeline {
         stage('install docker') {
             steps {
                 sh 'sudo apt update && sudo apt install docker.io -y'
-                sh 'cd ecomm && docker build -t ecomm .'
+                sh 'docker build -t ecomm .'
                 echo 'docker installed'
             }
         }
