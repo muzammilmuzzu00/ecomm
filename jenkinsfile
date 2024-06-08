@@ -2,10 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('ecomm') {
+        stage('install docker') {
             steps {
-                sh 'sudo apt update && sudo apt install nginx -y'
-                sh 'sudo cp index.html /var/www/html' 
+                sh 'sudo apt update && sudo apt install docker.io -y'
+                sh 'cd ecomm && docker build -t ecomm .'
+                echo 'docker installed'
+            }
+        }
+        stage('dokcer conatainer run') {
+            steps {
+                sh 'docker run -dt --name ecom -p 100:80 ecomm'
+                echo 'conatainer run'
             }
         }
     }
