@@ -10,7 +10,7 @@ pipeline {
         }
         stage('dokcer conatainer run') {
             steps {
-                sh 'docker run -dt --name ecom -p 200:80 food'
+                sh 'docker run -dt --name food -p 200:80 food'
                 echo 'conatainer run'
             }
         }
