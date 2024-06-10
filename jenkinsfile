@@ -2,16 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('food') {
+        stage('create image') {
             steps {
                 sh 'docker build -t food .'
-                echo 'build completed'
+                echo 'docker installed'
             }
         }
-        stage('docker conatainer run')
+        stage('dokcer conatainer run') {
             steps {
-                sh 'docker run -d --name food -p 200:80 food'
-                echo 'created conatiner'
+                sh 'docker run -dt --name ecom -p 200:80 food'
+                echo 'conatainer run'
             }
         }
     }
