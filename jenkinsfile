@@ -2,10 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('ecomm') {
+        stage('food') {
             steps {
-                sh 'sudo apt update && sudo apt install nginx -y'
-                sh 'sudo cp index.html /var/www/html' 
+                sh 'docker build -t food .'
+                echo 'build completed'
+            }
+        }
+        stage('docker conatainer run')
+            steps {
+                sh 'docker run -d --name food -p 200:80 food'
+                echo 'created conatiner'
             }
         }
     }
