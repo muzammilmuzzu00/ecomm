@@ -3,16 +3,16 @@ pipeline {
     agent any
 
     stages {
-        stage('app') {
+        stage('create image') {
             steps {
                 sh 'docker build -t app .'
-                echo 'build completed'
+                echo 'docker installed'
             }
         }
-        stage('docker conatainer run')
+        stage('dokcer conatainer run') {
             steps {
-                sh 'docker run -d --name app -p 300:80 app'
-                echo 'created conatiner'
+                sh 'docker run -dt --name app -p 300:80 app'
+                echo 'conatainer run'
             }
         }
     }
